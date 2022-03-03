@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <span class="h3">Lista de Mascotas</span>
+            <h5 style="margin-top: 30px;" *ngIf="mascotas.length == 0">No hay datos en la lista</h5>
+            <table *ngIf="mascotas.length > 0" class="table table-success table-striped mt-5">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Raza</th>
+                    <th>Edad</th>
+                    <th>Propietario</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of mascotas">
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.raza}}</td>
+                    <td>{{item.edad}}</td>
+                    <td>{{item.propietario}}</td>
+                    <td>
+                        <i class="fa-solid fa-pen-to-square fa-lg text-info" style="margin-right: 5px;" [routerLink]="['/edit-mascotas/', item.id]"></i>
+                        <i (click)="eliminarMascota(item.id)" class="fa-solid fa-trash-can fa-lg text-danger"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-dark" routerLink="/crear-mascotas">Agregar</button>
+        </div>
+    </div>
+</div>
